@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>이음마당 | 유지우 아카이빙</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poor Story', cursive;
+      background: #fff8e8;
+      color: #3d3327;
+      overflow-x: hidden;
+    }
+
+    header {
+      position: relative;
+      top: 0;
+      width: 100%;
+      height: 70px;
+      padding: 0 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255, 248, 232, 0.82);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+      border-bottom: 1px solid rgba(141, 112, 75, 0.15);
+    }
+
+    header h1 {
+      font-size: 28px;
+      color: #6f8f4e;
+    }
+
+    nav a {
+      margin-left: 28px;
+      text-decoration: none;
+      color: #5d4a37;
+      font-size: 20px;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #d98945;
+    }
+
+.hero-title{
+  position:absolute;
+  left:40px;
+  top:40px;
+
+  padding:14px 18px;
+
+  border-radius:18px;
+
+  background:rgba(255,248,232,0.75);
+
+  backdrop-filter:blur(4px);
+
+  z-index:5;
+}
+
+.hero-title h2{
+  font-size:42px;
+}
+
+.hero-title p{
+  font-size:16px;
+}
+
+.hero-title span{
+  font-size:16px;
+}
+
+.spot {
+  position: absolute;
+  width: 150px;
+  height: auto;
+  cursor: pointer;
+  z-index: 6;
+  transition: 0.25s ease;
+}
+
+.spot:hover {
+  transform: scale(1.08);
+  filter: brightness(1.08);
+}
+
+/* 버튼 위치 */
+.spot-rest {
+  left: 8%;
+  top: 43%;
+}
+
+.spot-garden {
+  left: 31%;
+  top: 32%;
+}
+
+.spot-kids {
+  right: 22%;
+  top: 22%;
+}
+
+.spot-chess {
+  left: 33%;
+  bottom: 37%;
+}
+
+.spot-yut {
+  right: 15%;
+  bottom: 36%;
+}
+
+.spot-community {
+  left: 45%;
+  top: 40%;
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  z-index: 999;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup img {
+  max-width: 82%;
+  max-height: 82%;
+  border-radius: 24px;
+  box-shadow: 0 20px 70px rgba(0,0,0,0.4);
+} 
+
+section {
+  padding: 110px 90px;
+}
+section.hero {
+  padding: 0 !important;
+}
+
+    .intro {
+      background: #fffdf4;
+      text-align: center;
+    }
+
+    .intro h2 {
+      font-size: 52px;
+      color: #6f8f4e;
+      margin-bottom: 30px;
+    }
+
+    .intro p {
+      width: 850px;
+      margin: 0 auto;
+      font-size: 25px;
+      line-height: 1.8;
+    }
+
+    .section-title {
+      font-size: 52px;
+      color: #5f7f45;
+      margin-bottom: 50px;
+      text-align: center;
+    }
+
+ .zones {
+  background: #fff8e8;
+  overflow: hidden;
+}
+
+.carousel-wrap {
+  position: relative;
+  width: 100%;
+  height: 560px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.space-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 230px;
+  height: 230px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: white;
+  transition: all 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  cursor: pointer;
+}
+
+.space-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.space-card.active {
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  opacity: 1;
+  filter: none;
+  z-index: 10;
+}
+
+.space-card.active img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.space-card.active .card-text {
+  display: block;
+  position: absolute;
+  left: 55px;
+  right: 55px;
+  bottom: 40px;
+  text-align: left;
+  z-index: 20;
+}
+
+.space-card.active h3 {
+  font-size: 30px;
+  margin-bottom: 10px;
+  color: #d88642;
+  text-align: center;
+}
+
+.space-card.active p {
+  font-size: 18px;
+  line-height: 1.45;
+  color: #4f4030;
+}
+
+.space-card.active p {
+  font-size: 18px;
+  line-height: 1.5;
+  color: #4f4030;
+
+  width: 77.5%;
+  margin: 0 auto;
+
+  text-align: center;
+  min-height: 100px;
+}
+
+.space-card.blur {
+  filter: blur(0.5px);
+}
+
+    .concept {
+      background: #fffdf4;
+    }
+
+    .concept-wrap {
+      display: flex;
+      gap: 35px;
+      justify-content: center;
+    }
+
+    .concept-box {
+      width: 30%;
+      min-height: 260px;
+      padding: 34px;
+      border-radius: 32px;
+      background: linear-gradient(145deg, #f7d99a, #fff4d0);
+      box-shadow: 0 18px 40px rgba(129, 98, 50, 0.15);
+    }
+
+    .concept-box h3 {
+      font-size: 32px;
+      color: #4f6f36;
+      margin-bottom: 18px;
+    }
+
+    .concept-box p {
+      font-size: 23px;
+      line-height: 1.65;
+    }
+
+    .archive {
+      background:
+        linear-gradient(rgba(255, 250, 232, 0.9), rgba(255, 250, 232, 0.9)),
+        url("images/main.jpg");
+      background-size: contain;
+      background-position: center;
+      text-align: center;
+    }
+
+    .archive h2 {
+      font-size: 56px;
+      color: #5f7f45;
+      margin-bottom: 24px;
+    }
+
+    .archive p {
+      font-size: 26px;
+      line-height: 1.7;
+      width: 850px;
+      margin: 0 auto 40px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 16px 38px;
+      border-radius: 50px;
+      background: #6f8f4e;
+      color: white;
+      text-decoration: none;
+      font-size: 24px;
+      transition: 0.3s;
+    }
+
+    .button:hover {
+      background: #d98945;
+    }
+
+    footer {
+      padding: 40px;
+      text-align: center;
+      background: #5f7f45;
+      color: #fff8e8;
+      font-size: 20px;
+    }
+
+    .fade {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: 0.9s ease;
+    }
+
+    .fade.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+  .hero {
+  padding: 0;
+  margin: 0;
+  background: #f6edd4;
+}
+
+.hero-full {
+  width: 100%;
+  position: relative;
+}
+
+.hero-full > img:first-child {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>이음마당</h1>
+    <nav>
+      <a href="#intro">소개</a>
+      <a href="#zones">공간</a>
+      <a href="#concept">핵심</a>
+      <a href="#archive">아카이빙</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+  <div class="hero-full">
+    <img src="images/main.jpg" alt="이음마당 메인 이미지">
+
+    <img class="spot spot-rest" src="images/button1.png" alt="소통 정원" onclick="openPopup('images/rest.jpg')">
+    <img class="spot spot-garden" src="images/button2.png" alt="공동 텃밭" onclick="openPopup('images/garden.jpg')">
+    <img class="spot spot-kids" src="images/button3.png" alt="놀이마당" onclick="openPopup('images/kids.jpg')">
+    <img class="spot spot-chess" src="images/button4.png" alt="대형 체스" onclick="openPopup('images/chess.jpg')">
+    <img class="spot spot-yut" src="images/button5.png" alt="윷놀이 마당" onclick="openPopup('images/yut.jpg')">
+    <img class="spot spot-community" src="images/button6.png" alt="커뮤니티 센터" onclick="openPopup('images/community.jpg')">
+
+    <div class="hero-title">
+      <p>유지우 개인 아카이빙 웹사이트</p>
+      <h2>이음마당</h2>
+      <span>세대가 연결되는 세대통합 커뮤니티 공간</span>
+    </div>
+  </div>
+</section>
+
+<div class="popup" id="popup" onclick="closePopup()">
+  <img id="popupImg" src="" alt="상세 이미지">
+</div>
+
+  <section class="intro" id="intro">
+    <div class="fade">
+      <h2>프로젝트 소개</h2>
+      <p>
+        이음마당은 주거 환경 속 공용 공간이 세대 간 교류에 미치는 영향에 대한 
+        연구를 바탕으로 기획된 세대 통합 커뮤니티 공간이다. 
+        공용 공간이 충분히 존재하지만 실제 세대 간 교류가 활발하게 이루어지지 않는다는 
+        연구 결과를 통해 공간의 존재보다 공간의 구성 방식이 중요하다는 결론을 도출하였다.
+        이에 따라 놀이, 텃밭, 휴식, 체험 활동을 하나의 공간에 통합하여 
+        다양한 세대가 자연스럽게 만나고 상호작용 할 수 있는 환경을 설계하였다. 
+      </p>
+    </div>
+  </section>
+
+  <section class="zones" id="zones">
+  <h2 class="section-title fade">공간 구성</h2>
+
+  <div class="carousel-wrap fade">
+
+    <div class="card-stage" id="cardStage"></div>
+
+  </div>
+</section>
+
+  <section class="concept" id="concept">
+    <h2 class="section-title fade">핵심 가치</h2>
+
+    <div class="concept-wrap">
+      <div class="concept-box fade">
+        <h3>교류</h3>
+        <p>서로 다른 세대가 자연스럽게 만나고 대화할 수 있는 환경을 만듭니다.</p>
+      </div>
+
+      <div class="concept-box fade">
+        <h3>치유</h3>
+        <p>어린이와의 자연스러운 만남을 통해 정서적 안정감과 긍정적 경험을 제공합니다.</p>
+      </div>
+
+      <div class="concept-box fade">
+        <h3>공동체</h3>
+        <p>세대 간 이해와 배려를 바탕으로 지역사회 공동체 의식을 형성합니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="archive" id="archive">
+    <div class="fade">
+      <h2>Design Archive</h2>
+      <p>
+        이 웹사이트는 유지우의 세대통합 공간 디자인 프로젝트를 기록하기 위한
+        개인 아카이빙 공간입니다.
+      </p>
+      <a class="button" href="#intro">처음으로</a>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 유지우 · 이음마당 Space Design Project
+  </footer>
+
+  <script>
+  const spaces = [
+  {
+    title: "대형 체스 광장",
+    img: "images/chess-circle.jpg",
+    thumb: "images/chess-circle-back.jpg",
+    desc: "대형 체스, 윷놀이 등의 놀이 시설을 통해 어린이와 노인이 함께 참여하며 자연스럽게 대화하고 협력할 수 있는 공간입니다."
+  },
+  {
+    title: "대형 윷놀이 마당",
+    img: "images/yut-circle.jpg",
+    thumb: "images/yut-circle-back.jpg",
+    desc: "대형 체스, 윷놀이 등의 놀이 시설을 통해 어린이와 노인이 함께 참여하며 자연스럽게 대화하고 협력할 수 있는 공간입니다."
+  },
+  {
+    title: "공동 텃밭",
+    img: "images/garden-circle.jpg",
+    thumb: "images/garden-circle-back.jpg",
+    desc: "세대가 함께 식물을 가꾸고 수확하는 과정을 통해 지속적인 만남과 협력을 유도하는 공간입니다."
+  },
+  {
+    title: "소통 정원",
+    img: "images/rest-circle.jpg",
+    thumb: "images/rest-circle-back.jpg",
+    desc: "유기적인 곡선형 벤치와 개방형 쉼터를 배치하여 사람들이 자연스럽게 머물고 대화할 수 있도록 구성한 관계 형성 공간입니다."
+  },
+  {
+    title: "커뮤니티 휴식 공간",
+    img: "images/community-circle.jpg",
+    thumb: "images/community-circle-back.jpg",
+    desc: "유기적인 곡선형 벤치와 개방형 쉼터를 배치하여 사람들이 자연스럽게 머물고 대화할 수 있도록 구성한 관계 형성 공간입니다."
+  },
+  {
+    title: "놀이·체험 공간",
+    img: "images/kids-circle.jpg",
+    thumb: "images/kids-circle-back.jpg",
+    desc: "어린이의 신체 활동과 노인의 관찰 및 참여가 동시에 이루어지며 세대 간 시각적·정서적 교류를 제공합니다."
+  }
+];
+
+let activeIndex = 0;
+
+function renderCards() {
+  const stage = document.getElementById("cardStage");
+  stage.innerHTML = "";
+
+  spaces.forEach((space, index) => {
+    const card = document.createElement("div");
+    card.className = "space-card";
+
+    const offset = index - activeIndex;
+    const x = offset * 300;
+    const scale = index === activeIndex ? 1 : 0.45;
+    const opacity = index === activeIndex ? 1 : 0.45;
+    const zIndex = index === activeIndex ? 10 : 1;
+
+    const imageSrc = index === activeIndex ? space.img : space.thumb;
+
+    card.style.transform =
+      `translate(calc(-50% + ${x}px), -50%) scale(${scale})`;
+
+    card.style.opacity = opacity;
+    card.style.zIndex = zIndex;
+
+    if (index === activeIndex) {
+      card.classList.add("active");
+    }
+
+    card.innerHTML = `
+      <img src="${imageSrc}" alt="${space.title}">
+      <div class="card-text">
+        <h3>${space.title}</h3>
+        <p>${space.desc}</p>
+      </div>
+    `;
+
+    stage.appendChild(card);
+  });
+}
+
+function nextCard() {
+  activeIndex = (activeIndex + 1) % spaces.length;
+  renderCards();
+}
+
+function prevCard() {
+  activeIndex = (activeIndex - 1 + spaces.length) % spaces.length;
+  renderCards();
+}
+
+const carouselWrap = document.querySelector(".carousel-wrap");
+
+carouselWrap.addEventListener("click", function(e) {
+  const rect = carouselWrap.getBoundingClientRect();
+  const clickX = e.clientX - rect.left;
+
+  if (clickX < rect.width / 2) {
+    prevCard();
+  } else {
+    nextCard();
+  }
+});
+
+window.addEventListener("load", renderCards);
+    function openPopup(src) {
+  document.getElementById("popupImg").src = src;
+  document.getElementById("popup").style.display = "flex";
+}
+
+function closePopup() {
+  document.getElementById("popup").style.display = "none";
+}
+
+    const fadeElements = document.querySelectorAll(".fade");
+
+    function showOnScroll() {
+      fadeElements.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 80) {
+          el.classList.add("show");
+        }
+      });
+    }
+
+    window.addEventListener("scroll", showOnScroll);
+    window.addEventListener("load", showOnScroll);
+  </script>
+
+</body>
+</html>
